@@ -748,11 +748,11 @@ a {
 }
 
 .arrow-left {
-    left: calc(50% - 530px);
+    left: calc(50% - 360px);
 }
 
 .arrow-right {
-    right: calc(50% - 530px);
+    right: calc(50% - 360px);
 }
 
 .carousel-track-wrapper {

@@ -62,7 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (track && prevBtn && nextBtn && dotContainer) {
         const slides = Array.from(track.children);
         const dots = Array.from(dotContainer.children);
-        let currentIndex = 2; // E-Commerce Experience is index 2
+        let currentIndex = slides.findIndex(slide => slide.classList.contains('active'));
+        if (currentIndex === -1) currentIndex = 0;
 
         const updateCarousel = () => {
             // Keep index within bounds
@@ -166,8 +167,15 @@ document.addEventListener('DOMContentLoaded', () => {
         // Click Cards to Focus Event Listeners
         slides.forEach((slide, idx) => {
             slide.addEventListener('click', () => {
-                currentIndex = idx;
-                updateCarousel();
+                if (currentIndex === idx) {
+                    const link = slide.getAttribute('data-link');
+                    if (link) {
+                        window.open(link, '_blank');
+                    }
+                } else {
+                    currentIndex = idx;
+                    updateCarousel();
+                }
             });
         });
 
